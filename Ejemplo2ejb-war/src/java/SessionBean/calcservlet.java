@@ -44,7 +44,7 @@ public class calcservlet extends HttpServlet {
             out.println("<body>");
             int x = Integer.parseInt(request.getParameter("t1"));
             int y = Integer.parseInt(request.getParameter("t2"));
-            out.println("<h1>La suma es : " + calcbean.sumar(x, y) + "</h1>");
+            out.println("<h1>La suma es  : " + calcbean.sumar(x, y) + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
