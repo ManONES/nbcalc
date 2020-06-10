@@ -6,6 +6,8 @@
 package SessionBean;
 
 import javax.ejb.Local;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 
 /**
  *
@@ -13,7 +15,13 @@ import javax.ejb.Local;
  */
 @Local
 public interface calcbeanLocal {
-
     Integer sumar(int a, int b);
     
+    public JsonArray dukes();
+    
+    public JsonObject duke (String name, int age);    
+ 
+    public JsonArray mensajes();
+       
+    public JsonObject mensaje (String message);
 }
