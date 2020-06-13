@@ -13,6 +13,7 @@ import java.io.PrintWriter;
 import static java.net.Proxy.Type.HTTP;
 import java.nio.charset.StandardCharsets;
 import javax.ejb.EJB;
+import javax.json.JsonArray;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -95,24 +96,20 @@ public class dukeservlet extends HttpServlet {
         System.out.println("doPost reached");       
         setAccessControlHeaders(response);
         
-        
 //        String _Reader = request.getReader().toString();
 //        System.out.println("_Reader: " + _Reader);        
-        
 //        String InputStream = request.getInputStream().toString();
 //        System.out.println("InputStream: " + InputStream);        
-        
-        String _HeaderNames = request.getHeaderNames().toString();
-        System.out.println("_HeaderNames: " + _HeaderNames);        
-        
-        String _String = request.toString();
-        System.out.println("String: " + _String);        
-        String _RequestedSessionId = request.getRequestedSessionId();
-        System.out.println("RequestedSessionId: " + _RequestedSessionId);        
-        String _Method = request.getMethod();
-        System.out.println("Method: " + _Method);        
-        String pathInfo = request.getPathInfo();
-        System.out.println("pathInfo: " + pathInfo);
+//        String _HeaderNames = request.getHeaderNames().toString();
+//        System.out.println("_HeaderNames: " + _HeaderNames);        
+//        String _String = request.toString();
+//        System.out.println("String: " + _String);        
+//        String _RequestedSessionId = request.getRequestedSessionId();
+//        System.out.println("RequestedSessionId: " + _RequestedSessionId);        
+//        String _Method = request.getMethod();
+//        System.out.println("Method: " + _Method);        
+//        String pathInfo = request.getPathInfo();
+//        System.out.println("pathInfo: " + pathInfo);
         
         StringBuffer jb = new StringBuffer();
         String line = null;
@@ -120,12 +117,12 @@ public class dukeservlet extends HttpServlet {
             BufferedReader reader = request.getReader();
             while ((line = reader.readLine()) != null)
             jb.append(line);
-        } catch (Exception e) { /*report an error*/ }
-
-          try {
+        } catch (Exception e) {
+            throw new IOException("Error recibiendo el JSON");
+        }
+        try {
             System.out.println("jb.toString(): " + jb.toString());
         } catch (Exception e) {
-            // crash and burn
             throw new IOException("Error parsing JSON request string");
         }
         

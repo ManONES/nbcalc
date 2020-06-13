@@ -10,6 +10,8 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.GET;
+import jdk.nashorn.internal.parser.JSONParser;
+
 
 /**
  *
@@ -56,9 +58,41 @@ public class calcbean implements calcbeanLocal {
        
     @Override
     public JsonObject mensaje (String message){
-        return Json.createObjectBuilder().
+        return Json.createObjectBuilder().  
                 add("message", message).
                 build();
     }
+    
+    
+    @GET
+    @Override
+    public void certificados(String Cadena){
+        
+        
+        
+    }
+       
+    @Override
+    public JsonObject certificado (String sCveEntidad,String sIdEmpresa,int iIdInstitucion,int iIdUserUcs,
+                                   String sRemoteAddress,String sLlavePublica64,String sLlavePrivada64,
+                                   String sFraseSeguridad, String sidUsuario, String sNombreUsuarioUCS,
+                                   String sToken){
+    return Json.createObjectBuilder().
+                add("sCveEntidad",sCveEntidad).
+                add("sIdEmpresa",sIdEmpresa).
+                add("iIdInstitucion",iIdInstitucion).
+                add("iIdUserUcs",iIdUserUcs).
+                add("sRemoteAddress",sRemoteAddress).
+                add("sLlavePublica64",sLlavePublica64).
+                add("sLlavePrivada64",sLlavePrivada64).
+                add("sFraseSeguridad",sFraseSeguridad).
+                add("sidUsuario",sidUsuario).
+                add("sNombreUsuarioUCS",sNombreUsuarioUCS).
+                add("sToken",sToken).
+                build();
+    }
+
+
+    
     
 }
